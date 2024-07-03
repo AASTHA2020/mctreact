@@ -9,12 +9,15 @@ const FooterTop = () => {
     <div className='w-full bg-white py-6'>
       <div className='w-full border-t-[1px] border-b-[-1px] py-8'>
         <div className='w-64 mx-auto text-center flex flex-col gap-1'>
+             {/* Conditional Rendering based on userInfo */}
           {userInfo ? (
+            // If user info is available
             <>
-              <p className='text-sm'>Hello, {userInfo.userName}</p>
+              <p className='text-sm'>Hello, {userInfo.userName}👋</p>
               <p className='text-sm'>See Personalised recommendations</p>
             </>
           ) : (
+             // If user info is not available
             <>
               <p className='text-sm'>See Personalised recommendations</p>
               <Link to="/signin">

@@ -7,6 +7,8 @@ const FooterBottom = () => {
   return (
     <div className='w-full bg-footerBottom py-8'>
       <div className='max-w-5xl mx-auto'>
+        
+        {/* Mapping over footerBottomItems arraay */}
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 text-gray-400'>
           {footerBottomItems.map((item) => (
             <div className='group cursor-pointer' key={item._id}>

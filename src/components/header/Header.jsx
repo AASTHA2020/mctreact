@@ -16,16 +16,17 @@ import { userSignOut } from '../../redux/amazonSlice';
 import { setSearchQuery, setSelectedCategory } from '../../redux/amazonSlice';
 
 const Header = () => {
-  const auth = getAuth();
-  const dispatch = useDispatch();
-  const [showAll, setShowAll] = useState(false);
-  const searchQuery = useSelector((state) => state.amazon.searchQuery);
-  const selectedCategory = useSelector((state) => state.amazon.selectedCategory);
-  const products = useSelector((state) => state.amazon.products);
-  const userInfo = useSelector((state) => state.amazon.userInfo);
-  const ref = useRef();
+  const auth = getAuth();              //Initalizing Firebase authentication 
+  const dispatch = useDispatch();         //Initializing useDispatch from redux
+  const [showAll, setShowAll] = useState(false);           //state to toggle showing all categories
+  const searchQuery = useSelector((state) => state.amazon.searchQuery);    //Selecting selected search query from redux store
+  const selectedCategory = useSelector((state) => state.amazon.selectedCategory);    //Selecting products state from redux store
+  const products = useSelector((state) => state.amazon.products);        //selecting products
+  const userInfo = useSelector((state) => state.amazon.userInfo);       //selecting userinfo
+  const ref = useRef();  //creating a ref dor Dom Element
 
   useEffect(() => {
+    //Here add event listener to close dropdown when clicking outside
     document.body.addEventListener("click", (e) => {
       if (e.target.contains(ref.current)) {
         showAll && setShowAll(false);
@@ -34,10 +35,11 @@ const Header = () => {
   }, [ref, showAll]);
 
   const handleLogout = () => {
+    //for logout
     signOut(auth)
       .then(() => {
         console.log("Sign out successfully");
-        dispatch(userSignOut());
+        dispatch(userSignOut());   //dispatching user sign-out action
       })
       .catch((error) => {
         console.log(error);
@@ -45,12 +47,14 @@ const Header = () => {
   }
 
   const handleSearch = (e) => {
-    dispatch(setSearchQuery(e.target.value));
+    //search Input
+    dispatch(setSearchQuery(e.target.value));  //dispatching search Query
   };
 
   const handleCategorySelect = (category) => {
-    dispatch(setSelectedCategory(category));
-    setShowAll(false);
+    //category section
+    dispatch(setSelectedCategory(category));   //dispatching seslected category action
+    setShowAll(false);         //closing dropdown after selecting category
   };
   
 

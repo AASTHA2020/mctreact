@@ -11,18 +11,21 @@ import {
 } from "../../assets/index";
 
 const Banner = () => {
-  const [dotActive, setDocActive] = useState(0);
+  const [dotActive, setDocActive] = useState(0);  //state to track active dot
+
+  //settings configuration for react-slick slider
   const settings = {
-    dots: true,
+    dots: true,  
     infinite: true,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     beforeChange: (prev, next) => {
-      setDocActive(next);
+      setDocActive(next);  //update active dot index
     },
     appendDots: (dots) => (
+      //poition of dots
       <div
         style={{
           position: "absolute",
@@ -45,6 +48,8 @@ const Banner = () => {
       </div>
     ),
     customPaging: (i) => (
+
+      //styling for individual dots
       <div
         style={
           i === dotActive

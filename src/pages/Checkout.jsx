@@ -5,29 +5,35 @@ import { useNavigate } from 'react-router-dom';
 import { placeOrder as placeOrderAction, clearCart } from '../redux/amazonSlice'; // Adjust the import path as needed
 
 const Checkout = () => {
+
+  //selecting products and user info from redux store
   const products = useSelector((state) => state.amazon.products);
   const userInfo = useSelector((state) => state.amazon.userInfo);
+  //defining state variable
   const [totalPrice, setTotalPrice] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoginRequiredModalOpen, setIsLoginRequiredModalOpen] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
+  const navigate = useNavigate(); //hook to navigate to different routes
+  const dispatch = useDispatch(); //hook to dispatch
 
-  useEffect(() => {
+  useEffect(() => { //used to calculate total price whenever products change
     let total = 0;
     products.forEach((item) => {
-      total += item.price * item.quantity;
+      total += item.price * item.quantity;  //total
     });
-    setTotalPrice(total.toFixed(2));
-  }, [products]);
+    setTotalPrice(total.toFixed(2));  //setting price with 2decimals
+  }, [products]);    // Dependency array to run effect whenever products change
 
-  useEffect(() => {
+
+  useEffect(() => {   //used to set the app element for modal accessibility
     Modal.setAppElement('#root');
   }, []);
 
+  //function to handle order placement
   const handlePlaceOrder = async (e) => {
-    e.preventDefault();
+    e.preventDefault();   //preventing default form submission
 
     const address = e.target.elements.address.value;
     const city = e.target.elements.city.value;
@@ -35,18 +41,21 @@ const Checkout = () => {
     const country = e.target.elements.country.value;
     const payment = e.target.elements.payment.value;
 
+    //validating form inputs
     if (!address || !city || !zip || !country || !payment) {
       alert('Please fill in all fields.');
       return;
     }
 
+    //check if user is logged in
     if (!userInfo) {
       setIsLoginRequiredModalOpen(true);
       return;
     }
 
-    setIsSubmitting(true);
+    setIsSubmitting(true);    // Setting submitting state to true
 
+    // Creating order details object
     const orderDetails = {
       products,
       address,
@@ -55,29 +64,33 @@ const Checkout = () => {
       country,
       payment,
       totalPrice,
-      date: new Date().toISOString(),
+      date: new Date().toISOString(),  // Adding current date and time
     };
 
-    await dispatch(placeOrderAction(orderDetails));
-    dispatch(clearCart());
-    setIsSubmitting(false);
+        // Dispatching placeOrder action to Redux store
+        await dispatch(placeOrderAction(orderDetails));
+        dispatch(clearCart()); // Dispatching clearCart action to clear the cart
+        setIsSubmitting(false); // Setting submitting state to false
+    
+        setModalIsOpen(true); // Opening order confirmation modal
+        setTimeout(() => {
+          setModalIsOpen(false); // Closing order confirmation modal after 3 seconds
+          navigate('/'); // Navigating to home page
+        }, 3000); // Adjust timing as needed
+      };
 
-    setModalIsOpen(true);
-    setTimeout(() => {
-      setModalIsOpen(false);
-      navigate('/');
-    }, 3000); // Adjust timing as needed
-  };
-
+    // Function to close the order confirmation modal
   const closeModal = () => {
     setModalIsOpen(false);
   };
 
-  const closeLoginRequiredModal = () => {
+    // Function to close the login required modal
+    const closeLoginRequiredModal = () => {
     setIsLoginRequiredModalOpen(false);
   };
 
-  const handleLoginRedirect = () => {
+    // Function to handle login redirect
+    const handleLoginRedirect = () => {
     closeLoginRequiredModal();
     navigate('/signin');
   };
@@ -122,7 +135,7 @@ const Checkout = () => {
         </div>
         <div className="w-full h-full bg-white p-4 col-span-1 lg:col-span-2">
           <div className="border border-gray-300 p-4 rounded-lg">
-            <h2 className="text-xl font-medium">Order Summary</h2>
+            <h2 className="text-xl font-medium">Order Summary📝</h2>
             <p className="text-lg font-semibold">
               Total:{" "}
               <span className="text-green-500">${totalPrice}</span>
@@ -130,7 +143,7 @@ const Checkout = () => {
             <form className="mt-6" onSubmit={handlePlaceOrder}>
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="address">
-                  Shipping Address
+                  Shipping Address📍
                 </label>
                 <input
                   type="text"
@@ -208,8 +221,8 @@ const Checkout = () => {
         overlayClassName="fixed inset-0 bg-black bg-opacity-50"
       >
         <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-          <h2 className="text-2xl font-semibold mb-4">Order Confirmed!</h2>
-          <p className="mb-4">Thank you for your order.</p>
+          <h2 className="text-2xl font-semibold mb-4">Order Confirmed!🥳</h2>
+          <p className="mb-4">Thank you for your order☺️</p>
         </div>
       </Modal>
       <Modal
@@ -221,7 +234,7 @@ const Checkout = () => {
       >
         <div className="bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-semibold mb-4">Login Required</h2>
-          <p className="mb-4">You need to be logged in to place an order.</p>
+          <p className="mb-4">You need to be logged in to place an order➡️</p>
           <div className="flex justify-end">
             <button
               className="mr-2 py-2 px-4 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition duration-300"

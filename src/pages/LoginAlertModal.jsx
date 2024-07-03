@@ -1,6 +1,7 @@
 import React from 'react';
 
 const LoginAlertModal = ({ isVisible, onClose }) => {
+ // If the modal is not visible, return null (do not render anything)
   if (!isVisible) return null;
 
   return (

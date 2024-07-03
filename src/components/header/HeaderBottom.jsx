@@ -7,10 +7,13 @@ import SideNavContent from "./SideNav";
 import { useSelector } from "react-redux";
 
 const HeaderBottom = () => {
-  const userInfo = useSelector((state) => state.amazon.userInfo);
-  const ref = useRef();
-  const [sidebar, setSidebar] = useState(false);
+  const userInfo = useSelector((state) => state.amazon.userInfo);   //fetching userinfo
+  const ref = useRef();               //craeting a ref for DOM element
+  const [sidebar, setSidebar] = useState(false);    //state to toggle sidebar visibility
+
+
   useEffect(() => {
+  //adding eventlistener to close sidebar when clicking outside
     document.body.addEventListener("click", (e) => {
       if (e.target.contains(ref.current)) {
         setSidebar(false);
@@ -41,25 +44,28 @@ const HeaderBottom = () => {
           <div className="w-full h-full relative">
             <motion.div
               ref={ref}
-              initial={{ x: -500, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ x: -500, opacity: 0 }}    //Initial animation state 
+              animate={{ x: 0, opacity: 1 }}      //Animation when sidebar is shown
+              transition={{ duration: 0.5 }}     //animation duration
               className="w-[290px] md:w-[350px] h-full bg-white border border-black"
             >
               <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
                 {userInfo ? (
+                  //if user info exits, renders userimage
                   <img
                     className="w-10 h-10 rounded-full"
                     src={userInfo.image}
                     alt="UserImg"
                   />
-                ) : (
+                ) : ( //otherwise render deault account circle icon
                   <AccountCircleIcon />
                 )}
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
                 {userInfo ? (
+                  //if user info exits, render user name 
                             <p className='text-sm mdl:text-xs text-gray-100 mdl:text-lightText font-medium'>Hello, {userInfo.userName}</p>
                         ) : (
+                          //otherwise, render signin text
                             <p className='text-sm mdl:text-xs text-white mdl:text-lightText font-light'>Hello, sign in</p>
                         )}
                 </h3>

@@ -14,6 +14,7 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //The useEffect hook fetches product data using the product id from the URL parameters.
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -29,6 +30,7 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
+  //handleAddToCart dispatches an action to add the product to the cart.
   const handleAddToCart = () => {
     dispatch(addToCart({
       id: product.id,
@@ -42,6 +44,7 @@ const ProductDetails = () => {
     toast.success("Product added to cart!");
   };
 
+  //handleBuyNow adds the product to the cart and navigates to the checkout page.
   const handleBuyNow = () => {
     handleAddToCart(); // Optionally, add the item to the cart first
     navigate('/checkout'); // Redirect to the checkout page

@@ -18,6 +18,8 @@ const FooterMiddle = () => {
               <li className='footerLink'>Amazon Science</li>
             </ul>
           </div>
+
+             {/* Section: Make Money with Us */}
           <div>
             <h3 className='font-titlefont text-white text-base font-semibold mb-3'>Make Money with Us</h3>
             <ul className='flex flex-col gap-2 font-bodyfont'>
@@ -30,6 +32,8 @@ const FooterMiddle = () => {
               <li className='footerLink'>Host an Amazon Hub</li>
             </ul>
           </div>
+
+            {/* Section: Amazon Payment Products */}
           <div>
             <h3 className='font-titlefont text-white text-base font-semibold mb-3'>Amazon Payment Products</h3>
             <ul className='flex flex-col gap-2 font-bodyfont'>
@@ -39,6 +43,7 @@ const FooterMiddle = () => {
               <li className='footerLink'>Amazon Currency Converter</li>
             </ul>
           </div>
+            {/* Section: Let Us Help You */}
           <div>
             <h3 className='font-titlefont text-white text-base font-semibold mb-3'>Let Us Help You</h3>
             <ul className='flex flex-col gap-2 font-bodyfont'>
@@ -54,16 +59,23 @@ const FooterMiddle = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Bottom Section with Logo and Language Options */}
       <div className='w-full flex flex-col items-center justify-center py-6 px-4'>
         <div>
           <img className='w-20 pt-3' src={logo} alt="" />
         </div>
         <div className='flex gap-2 mb-4'>
+
+             {/* Language Selection Button */}
           <p className='flex gap-1 items-center justify-center border border-gray-500 hover:border-amazon_yellow cursor-pointer duration-200 px-2 py-1'>
             English
           </p>
         </div>
         <div className='flex gap-1 items-center justify-center border border-gray-500 hover:border-amazon_yellow cursor-pointer duration-200 px-2 py-1'>
+                    {/* Country Flag and Name */}
+
           <img className='w-6' src={bdFlag} alt="" />
           <p>India</p>
         </div>
