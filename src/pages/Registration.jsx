@@ -103,7 +103,7 @@ const Registration = () => {
         .then((userCredential) => {
           updateProfile(auth.currentUser, {
             displayName: clientName,
-            photoURL: "https://img.freepik.com/free-photo/brunette-business-woman-with-wavy-long-hair-blue-eyes-stands-holding-notebook-hands_197531-343.jpg?w=360&t=st=1717956891~exp=1717957491~hmac=20622720c7ba340d933b55db529758d5525e957444418641cf95be2cadfef007"
+            photoURL: "https://www.istockphoto.com/photo/businesswoman-posing-and-smiling-during-a-meeting-in-an-office-gm1396644902-451328867"
           });
           const user = userCredential.user;
           // console.log(user);
