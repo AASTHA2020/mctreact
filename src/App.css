@@ -1,0 +1,13 @@
+/* Example App.css or your CSS file */
+.chatbot-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
