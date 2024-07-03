@@ -12,17 +12,18 @@ const Orders = () => {
           <p className="text-lg">You have no orders yet.</p>
         ) : (
           orders.map((order, index) => (
-            order && ( // Check if order is not null
+            order && (
               <div key={index} className="w-full bg-white p-4 mb-4 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-2">Order #{index + 1}</h3>
-                {order.date && ( // Check if order.date exists
+                {order.date && (
                   <p className="text-sm text-gray-600 mb-2">Date: {new Date(order.date).toLocaleString()}</p>
                 )}
                 <p className="text-lg font-medium mb-2">Total: ${order.totalPrice}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {order.products && order.products.map((item, i) => ( // Check if order.products exists
+                  {order.products && order.products.map((item, i) => (
                     <div key={i} className="border border-gray-300 p-4 rounded-lg">
                       <h4 className="text-lg font-semibold">{item.title}</h4>
+                      <img src={item.image} alt={item.title} className="w-full h-auto mb-2 rounded-lg" />
                       <p className="text-sm text-gray-600">{item.description}</p>
                       <p className="text-lg font-semibold">Unit Price: ${item.price}</p>
                       <p className="text-lg font-semibold">Quantity: {item.quantity}</p>
