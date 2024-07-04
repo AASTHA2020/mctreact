@@ -9,6 +9,7 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        '@mui/icons-material/keyboardArrowRight',
       ],
     },
   },
