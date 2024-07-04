@@ -14,7 +14,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@mui/icons-material': '@mui/icons-material/esm'
+      '@mui/icons-material': '@mui/icons-material'
     }
   }
 });
