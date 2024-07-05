@@ -1,7 +1,7 @@
 # 🌟 Amazon Clone E-Commerce Platform
 
 
-### 🌐 You can explore the live version here 👉  [Amazon Clone](https://your-vercel-app.vercel.app/)
+### 🌐 You can explore the live version here 👉  [Amazon Clone](https://mctreact.vercel.app/)
 
 
 ## 🚀 Overview
