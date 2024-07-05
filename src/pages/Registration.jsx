@@ -103,7 +103,7 @@ const Registration = () => {
         .then((userCredential) => {
           updateProfile(auth.currentUser, {
             displayName: clientName,
-            photoURL: "https://www.istockphoto.com/photo/businesswoman-posing-and-smiling-during-a-meeting-in-an-office-gm1396644902-451328867"
+            photoURL: ""
           });
           const user = userCredential.user;
           // console.log(user);

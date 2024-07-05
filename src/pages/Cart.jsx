@@ -87,7 +87,7 @@ const Cart = () => {
           </div>
           <div className="w-full h-full bg-white p-4 col-span-1">
             <div className="border border-gray-300 p-4 rounded-lg">
-              <h2 className="text-xl font-medium">Order Summary</h2>
+              <h2 className="text-xl font-medium">Order Summary📝</h2>
               <p className="text-lg font-semibold">
                 Total:{" "}
                 <span className="text-green-500">${totalPrice}</span>
@@ -115,10 +115,10 @@ const Cart = () => {
             />
           </div>
           <div className="w-96 p-4 bg-white flex flex-col items-center rounded-md shadow-lg">
-            <h1 className="font-titlFont text-xl font-bold">Your Cart feels Lonely</h1>
+            <h1 className="font-titlFont text-xl font-bold">Your Cart feels Lonely🥺</h1>
             <p className="text-sm text-center">
               Your Shopping cart lives to serve. Give it purpose - fill it with
-              books, electronics, videos, etc. and make it happy.
+              books, electronics, videos, etc. and make it happy😁
             </p>
             <Link to="/">
               <button className="mt-6 bg-yellow-400 rounded-md cursor-pointer hover:bg-yellow-500 active:bg-yellow-700 px-8 py-2 font-titlefont font-semibold text-lg">
