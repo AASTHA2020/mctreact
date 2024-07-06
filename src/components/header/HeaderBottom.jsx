@@ -54,16 +54,16 @@ const HeaderBottom = () => {
               className="w-[290px] md:w-[350px] h-full bg-white border border-black"
             >
               <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4">
-                {userInfo ? (
+                {/* {userInfo ? (
                   //if user info exits, renders userimage
                   <img
                     className="w-10 h-10 rounded-full"
                     src={userInfo.image}
                     alt="UserImg"
                   />
-                ) : ( //otherwise render deault account circle icon
+                ) : ( //otherwise render deault account circle icon */}
                   <AccountCircleIcon />
-                )}
+                
                 <h3 className="font-titleFont font-bold text-lg tracking-wide">
                 {userInfo ? (
                   //if user info exits, render user name 
