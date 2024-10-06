@@ -2,6 +2,7 @@
 
 
 ### 🌐 You can explore the live version here 👉  [Amazon Clone](https://mctreact.vercel.app/)
+![Amazon Clone](https://github.com/AASTHA2020/Personalbuild/blob/main/assets/amazon.png?raw=true)
 
 
 ## 🚀 Overview
